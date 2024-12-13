@@ -198,7 +198,10 @@ class BaseAnchorOptimizer:
 
         self.logger.info(f'Anchor optimize result:{anchor_results}')
         if path:
-            json_path = osp.join(path, 'anchor_optimize_result.json')
+            if osp.isdir(path):
+                json_path = osp.join(path, 'anchor_optimize_result.json')
+            else:
+                json_path = path
             dump(anchor_results, json_path)
             self.logger.info(f'Result saved in {json_path}')
 

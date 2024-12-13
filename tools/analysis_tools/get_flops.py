@@ -84,8 +84,10 @@ def inference(args, logger):
         show_table=not args.not_show_table,  # show the complexity table
         show_arch=args.show_arch)  # show the complexity arch
 
-    result['flops'] = outputs['flops_str']
-    result['params'] = outputs['params_str']
+    # result['flops'] = outputs['flops_str']
+    # result['params'] = outputs['params_str']
+    result['flops'] = outputs['flops'] * 1e-9
+    result['params'] = outputs['params'] * 1e-6
     result['out_table'] = outputs['out_table']
     result['out_arch'] = outputs['out_arch']
 
